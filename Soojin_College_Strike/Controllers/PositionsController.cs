@@ -22,7 +22,7 @@ namespace Soojin_College_Strike.Controllers
         // GET: Positions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Position.ToListAsync());
+            return View(await _context.Positions.ToListAsync());
         }
 
         // GET: Positions/Details/5
@@ -33,7 +33,7 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var position = await _context.Position
+            var position = await _context.Positions
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (position == null)
             {
@@ -73,7 +73,7 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var position = await _context.Position.FindAsync(id);
+            var position = await _context.Positions.FindAsync(id);
             if (position == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var position = await _context.Position
+            var position = await _context.Positions
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (position == null)
             {
@@ -139,15 +139,15 @@ namespace Soojin_College_Strike.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var position = await _context.Position.FindAsync(id);
-            _context.Position.Remove(position);
+            var position = await _context.Positions.FindAsync(id);
+            _context.Positions.Remove(position);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PositionExists(int id)
         {
-            return _context.Position.Any(e => e.ID == id);
+            return _context.Positions.Any(e => e.ID == id);
         }
     }
 }

@@ -14,12 +14,62 @@ namespace Soojin_College_Strike.Data
         {
         }
 
-        public DbSet<Soojin_College_Strike.Models.Assignment> Assignment { get; set; }
+        public DbSet<Assignment> Assignments { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Shift> Shifts { get; set; }
 
-        public DbSet<Soojin_College_Strike.Models.Member> Member { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("STRIKE");
 
-        public DbSet<Soojin_College_Strike.Models.Position> Position { get; set; }
+            //Many to Many Primary Key
+            modelBuilder.Entity<Member_Position>()
+            .HasKey(mp => new { mp.MemberID, mp.PositionID });
+                        
+            //Add a unique index to the Position Title
+            modelBuilder.Entity<Position>()
+            .HasIndex(p => p.Title)
+            .IsUnique();
 
-        public DbSet<Soojin_College_Strike.Models.Shift> Shift { get; set; }
+            //Add a unique index to the Member eMail
+            modelBuilder.Entity<Member>()
+            .HasIndex(m => m.eMail)
+            .IsUnique();
+
+            //Add a unique index to the Shift 
+            //ShiftDate and MemberID
+            modelBuilder.Entity<Shift>()
+            .HasIndex(s => new { s.ShiftDate, s.MemberID })
+            .IsUnique();
+
+            //Add a unique index to the Assignment AssignmentName
+            modelBuilder.Entity<Assignment>()
+            .HasIndex(a => a.AssignmentName)
+            .IsUnique();
+
+
+            //Prevent Cascade Delete Assignment to Shift
+            modelBuilder.Entity<Assignment>()
+                .HasMany<Shift>(p => p.Shifts)
+                .WithOne(c => c.Assignment)
+                .HasForeignKey(c => c.AssignmentID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //Prevent Cascade Delete Assignment to Member
+            modelBuilder.Entity<Assignment>()
+                .HasMany<Member>(p => p.Members)
+                .WithOne(c => c.Assignment)
+                .HasForeignKey(c => c.AssignmentID)
+                .OnDelete(DeleteBehavior.Restrict);
+ 
+            //Prevent Cascade Delete Member to Shift(Child Perspective)
+            modelBuilder.Entity<Shift>()
+                .HasOne(c => c.Member)
+                .WithMany(p => p.Shifts)
+                .HasForeignKey(c => c.MemberID)
+                .OnDelete(DeleteBehavior.Restrict);
+                        
+        }
     }
 }

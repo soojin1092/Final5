@@ -22,7 +22,7 @@ namespace Soojin_College_Strike.Controllers
         // GET: Shifts
         public async Task<IActionResult> Index()
         {
-            var soojin_College_StrikeContext = _context.Shift.Include(s => s.Assignment).Include(s => s.Member);
+            var soojin_College_StrikeContext = _context.Shifts.Include(s => s.Assignment).Include(s => s.Member);
             return View(await soojin_College_StrikeContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var shift = await _context.Shift
+            var shift = await _context.Shifts
                 .Include(s => s.Assignment)
                 .Include(s => s.Member)
                 .FirstOrDefaultAsync(m => m.ID == id);
@@ -49,8 +49,8 @@ namespace Soojin_College_Strike.Controllers
         // GET: Shifts/Create
         public IActionResult Create()
         {
-            ViewData["AssignmentID"] = new SelectList(_context.Assignment, "ID", "AssignmentName");
-            ViewData["MemberID"] = new SelectList(_context.Assignment, "ID", "AssignmentName");
+            ViewData["AssignmentID"] = new SelectList(_context.Assignments, "ID", "AssignmentName");
+            ViewData["MemberID"] = new SelectList(_context.Assignments, "ID", "AssignmentName");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace Soojin_College_Strike.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AssignmentID"] = new SelectList(_context.Assignment, "ID", "AssignmentName", shift.AssignmentID);
-            ViewData["MemberID"] = new SelectList(_context.Assignment, "ID", "AssignmentName", shift.MemberID);
+            ViewData["AssignmentID"] = new SelectList(_context.Assignments, "ID", "AssignmentName", shift.AssignmentID);
+            ViewData["MemberID"] = new SelectList(_context.Assignments, "ID", "AssignmentName", shift.MemberID);
             return View(shift);
         }
 
@@ -80,13 +80,13 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var shift = await _context.Shift.FindAsync(id);
+            var shift = await _context.Shifts.FindAsync(id);
             if (shift == null)
             {
                 return NotFound();
             }
-            ViewData["AssignmentID"] = new SelectList(_context.Assignment, "ID", "AssignmentName", shift.AssignmentID);
-            ViewData["MemberID"] = new SelectList(_context.Assignment, "ID", "AssignmentName", shift.MemberID);
+            ViewData["AssignmentID"] = new SelectList(_context.Assignments, "ID", "AssignmentName", shift.AssignmentID);
+            ViewData["MemberID"] = new SelectList(_context.Assignments, "ID", "AssignmentName", shift.MemberID);
             return View(shift);
         }
 
@@ -122,8 +122,8 @@ namespace Soojin_College_Strike.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AssignmentID"] = new SelectList(_context.Assignment, "ID", "AssignmentName", shift.AssignmentID);
-            ViewData["MemberID"] = new SelectList(_context.Assignment, "ID", "AssignmentName", shift.MemberID);
+            ViewData["AssignmentID"] = new SelectList(_context.Assignments, "ID", "AssignmentName", shift.AssignmentID);
+            ViewData["MemberID"] = new SelectList(_context.Assignments, "ID", "AssignmentName", shift.MemberID);
             return View(shift);
         }
 
@@ -135,7 +135,7 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var shift = await _context.Shift
+            var shift = await _context.Shifts
                 .Include(s => s.Assignment)
                 .Include(s => s.Member)
                 .FirstOrDefaultAsync(m => m.ID == id);
@@ -152,15 +152,15 @@ namespace Soojin_College_Strike.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var shift = await _context.Shift.FindAsync(id);
-            _context.Shift.Remove(shift);
+            var shift = await _context.Shifts.FindAsync(id);
+            _context.Shifts.Remove(shift);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ShiftExists(int id)
         {
-            return _context.Shift.Any(e => e.ID == id);
+            return _context.Shifts.Any(e => e.ID == id);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Soojin_College_Strike.Controllers
         // GET: Assignments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Assignment.ToListAsync());
+            return View(await _context.Assignments.ToListAsync());
         }
 
         // GET: Assignments/Details/5
@@ -33,7 +33,7 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var assignment = await _context.Assignment
+            var assignment = await _context.Assignments
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (assignment == null)
             {
@@ -73,7 +73,7 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var assignment = await _context.Assignment.FindAsync(id);
+            var assignment = await _context.Assignments.FindAsync(id);
             if (assignment == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace Soojin_College_Strike.Controllers
                 return NotFound();
             }
 
-            var assignment = await _context.Assignment
+            var assignment = await _context.Assignments
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (assignment == null)
             {
@@ -139,15 +139,15 @@ namespace Soojin_College_Strike.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var assignment = await _context.Assignment.FindAsync(id);
-            _context.Assignment.Remove(assignment);
+            var assignment = await _context.Assignments.FindAsync(id);
+            _context.Assignments.Remove(assignment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AssignmentExists(int id)
         {
-            return _context.Assignment.Any(e => e.ID == id);
+            return _context.Assignments.Any(e => e.ID == id);
         }
     }
 }
