@@ -3480,28 +3480,28 @@
     "Microsoft.NETCore.App/2.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mVxL8khUMyl0L+MkyY0SLhZU13Z+KoUCcCTDC1MZKaegUVbAuaEzqX0VyGJ5U1lyo8fh6ryJPbsBPJww6qcKpw==",
+      "sha512": "sha512-AvT774nTFgU8cYcGO9j1EMwuayKslxqYTurg32HGpWa2hEYNuW2+XgYVVNcZe6Ndbr84QX6fwaOZfd5n+1m2OA==",
       "path": "microsoft.netcore.app/2.1.0",
       "hashPath": "microsoft.netcore.app.2.1.0.nupkg.sha512"
     },
     "Microsoft.NETCore.DotNetAppHost/2.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cZiASE81rksPJsGJ04hd/uEn6guNGAoqNsrzE/DP6AaNRPCHwTe6nZvHd4uAPj3MaVRQ3U0c6cRycMaHCYLPUQ==",
+      "sha512": "sha512-f/47I60Wg3SrveTvnecCQhCZCAMYlUujWF15EQ/AZTqF/54qeEJjbCIAxKcZI8ToUYzSg6JdfrHggsgjCyCE9Q==",
       "path": "microsoft.netcore.dotnetapphost/2.1.0",
       "hashPath": "microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512"
     },
     "Microsoft.NETCore.DotNetHostPolicy/2.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JHyN4ibWkJy/2HlqHnUXBmcpzZfIhCFw7uGqWU5fyL7mzGq5E5vjCHChpFqPzRugM2QS3q31re6CAVzFBzTMqw==",
+      "sha512": "sha512-p50yZYKzhH64lmArJgoKjtvsNehECa+/sAuOQzZh5uDNBTbRKxjN8IXP1e517xdVsgrFcSNxSEVDKZIOWVjGcQ==",
       "path": "microsoft.netcore.dotnethostpolicy/2.1.0",
       "hashPath": "microsoft.netcore.dotnethostpolicy.2.1.0.nupkg.sha512"
     },
     "Microsoft.NETCore.DotNetHostResolver/2.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-d+V3yHIMimz3m4MkecBtIrf1NI1oPUez5eaAXbVSWqNyFUuTeBeolYwA3yCYeKCS0zDkV0QjXEOaHd0pjujOZA==",
+      "sha512": "sha512-fS9D8a+y55n6mHMbNqgHXaPGkjmpVH9h97OyrBxsCuo3Z8aQaFMJ5xIfmzji2ntUd/3truhMbSgSfIelHOkQpg==",
       "path": "microsoft.netcore.dotnethostresolver/2.1.0",
       "hashPath": "microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512"
     },
@@ -3515,7 +3515,7 @@
     "Microsoft.NETCore.Targets/2.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-R+z1NrmXptbA6maCVVPcJ9xrCjUZFGEW1CHQeCqOyRni6PFxANYjiEjDBAK7wQUdmdZFy3xKJYUY0qhpb+hSLQ==",
+      "sha512": "sha512-etaYwrLZQUS+b3UWTpCnUggd6SQ/ZIkZ5pHnoR7+dIWt/wp2Rv3CvMKOZISsrt7FYCHKwCxfcepuuyEWkQxADg==",
       "path": "microsoft.netcore.targets/2.1.0",
       "hashPath": "microsoft.netcore.targets.2.1.0.nupkg.sha512"
     },

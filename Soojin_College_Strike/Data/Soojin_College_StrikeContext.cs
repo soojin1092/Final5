@@ -26,7 +26,10 @@ namespace Soojin_College_Strike.Data
             //Many to Many Primary Key
             modelBuilder.Entity<Member_Position>()
             .HasKey(mp => new { mp.MemberID, mp.PositionID });
-                        
+
+            modelBuilder.Entity<Shift>()
+            .HasKey(s => new { s.MemberID, s.AssignmentID });
+
             //Add a unique index to the Position Title
             modelBuilder.Entity<Position>()
             .HasIndex(p => p.Title)
@@ -62,14 +65,14 @@ namespace Soojin_College_Strike.Data
                 .WithOne(c => c.Assignment)
                 .HasForeignKey(c => c.AssignmentID)
                 .OnDelete(DeleteBehavior.Restrict);
- 
+
             //Prevent Cascade Delete Member to Shift(Child Perspective)
             modelBuilder.Entity<Shift>()
                 .HasOne(c => c.Member)
                 .WithMany(p => p.Shifts)
                 .HasForeignKey(c => c.MemberID)
                 .OnDelete(DeleteBehavior.Restrict);
-                        
+
         }
     }
 }

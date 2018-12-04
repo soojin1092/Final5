@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Soojin_College_Strike.Models
 {
     public class Shift
-    {        
+    {
+        
         public int ID { get; set; }
 
         [DataType(DataType.Date)]
@@ -23,6 +24,8 @@ namespace Soojin_College_Strike.Models
         [Required(ErrorMessage = "Assignment is required.")]
         public int AssignmentID { get; set; }
         public Assignment Assignment { get; set; }
+
+       
 
     }
 }

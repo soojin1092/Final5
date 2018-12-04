@@ -1,0 +1,1 @@
+﻿Add-Migration -Context Soojin_College_StrikeContext -o Data\STRIKEMigrations
